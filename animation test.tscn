@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ddw27r53b4wrs"]
+
+[ext_resource type="PackedScene" uid="uid://b3oxisqm00wrp" path="res://godotboingo.glb" id="1_kuo8g"]
+[ext_resource type="Script" uid="uid://bqtr1k2k0ejdl" path="res://hard_surface_animator.gd" id="2_2gwag"]
+
+[sub_resource type="GDScript" id="GDScript_7vbqm"]
+resource_name = "animation test"
+script/source = "extends Node3D
+
+@onready var animplayer :HardSurfaceAnimationPlayer= $AnimationPlayer
+var target_position := 1.0
+var at_start := true
+
+	
+	
+var tick := 0.0
+func _process(delta: float) -> void:
+	tick += delta * 2
+	#var mv := Input.get_axis(\"ui_up\", \"ui_down\")
+	var mv :float= sin(tick) * sin(tick) 
+	if mv:
+		target_position = clampf(mv,0.0,1.0)
+		#print(target_position)
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		match int(snappedf(tick, 1)) % 2:
+			0:
+				animplayer.twist_bones(\"Bone\", Vector3.RIGHT, PI/2 * target_position)
+			1:
+				animplayer.twist_bones(\"Bone.001\", Vector3.RIGHT, -PI/2 * target_position + randf_range(-0.5,0.5))
+	if Input.is_action_pressed(\"ui_up\"):
+		animplayer.twist_bones(\"Bone.001\", Vector3.RIGHT, -PI/2 * target_position, true)
+		animplayer.twist_bones(\"Bone\", Vector3.RIGHT, PI/2 * target_position, true)
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kuo8g"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_2gwag"]
+sky_material = SubResource("ProceduralSkyMaterial_kuo8g")
+
+[sub_resource type="Environment" id="Environment_vyqgf"]
+background_mode = 2
+sky = SubResource("Sky_2gwag")
+glow_enabled = true
+
+[node name="Collection" unique_id=1592652360 instance=ExtResource("1_kuo8g")]
+script = SubResource("GDScript_7vbqm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0" unique_id=459599818]
+environment = SubResource("Environment_vyqgf")
+
+[node name="Camera" parent="." index="1" unique_id=691609062]
+transform = Transform3D(0.68592066, -0.32401347, 0.6515583, -1.4901163e-08, 0.89539564, 0.44527143, -0.7276764, -0.30542085, 0.6141704, 7.3588915, 4.958309, 8.46566)
+fov = 47.2
+
+[node name="AnimationPlayer" parent="." index="3" unique_id=1127832485 node_paths=PackedStringArray("skeleton")]
+playback_default_blend_time = 0.3
+script = ExtResource("2_2gwag")
+skeleton = NodePath("../Armature/Skeleton3D")
