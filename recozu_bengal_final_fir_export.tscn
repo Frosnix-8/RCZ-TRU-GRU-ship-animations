@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://b85le5cfi5bn7"]
+
+[ext_resource type="PackedScene" uid="uid://bfkc3d4nd6hqk" path="res://airpl/RECOZU-Bengal.glb" id="1_je08d"]
+[ext_resource type="Script" uid="uid://byb1pxlxg1cac" path="res://recozu-bengal-manager.gd" id="2_godjj"]
+[ext_resource type="Script" uid="uid://bqtr1k2k0ejdl" path="res://hard_surface_animator.gd" id="3_xk25j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_je08d"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_godjj"]
+sky_material = SubResource("ProceduralSkyMaterial_je08d")
+
+[sub_resource type="Environment" id="Environment_xk25j"]
+background_mode = 2
+sky = SubResource("Sky_godjj")
+tonemap_mode = 1
+glow_enabled = true
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_itwxw"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_2kjjo"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_4q3tg"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_avogp"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l7hy7"]
+animation = &"heatvent movement"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_irk6f"]
+animation = &"close main B thruster "
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jnd8g"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qkahd"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dylrm"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0qm2q"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m4dm1"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_0qm2q"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5rl5"]
+animation = &"open weapon bay"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_irk6f"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_11knc"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pleiu"]
+animation = &"close port B thrusters "
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4q3tg"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q2aqw"]
+animation = &"close starboard B thrusters "
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_l7hy7"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_m7jt8"]
+graph_offset = Vector2(-495.3419, -214.12544)
+nodes/output/position = Vector2(350, 920)
+"nodes/Main B Thruster/node" = SubResource("AnimationNodeAnimation_irk6f")
+"nodes/Main B Thruster/position" = Vector2(-720, -150)
+nodes/RESET/node = SubResource("AnimationNodeAnimation_m4dm1")
+nodes/RESET/position = Vector2(-720, 20)
+"nodes/port B thrusters/node" = SubResource("AnimationNodeAnimation_pleiu")
+"nodes/port B thrusters/position" = Vector2(-710, 300)
+"nodes/RESET 2/node" = SubResource("AnimationNodeAnimation_jnd8g")
+"nodes/RESET 2/position" = Vector2(-710, 470)
+"nodes/starboard B thrusters/node" = SubResource("AnimationNodeAnimation_q2aqw")
+"nodes/starboard B thrusters/position" = Vector2(-710, 730)
+"nodes/RESET 3/node" = SubResource("AnimationNodeAnimation_qkahd")
+"nodes/RESET 3/position" = Vector2(-710, 900)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_avogp")
+nodes/Add2/position = Vector2(-160, 10)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_itwxw")
+"nodes/Add2 2/position" = Vector2(100, 130)
+nodes/mainB/node = SubResource("AnimationNodeBlend2_11knc")
+nodes/mainB/position = Vector2(-460, -100)
+nodes/portB/node = SubResource("AnimationNodeBlend2_4q3tg")
+nodes/portB/position = Vector2(-430, 360)
+nodes/starboardB/node = SubResource("AnimationNodeBlend2_l7hy7")
+nodes/starboardB/position = Vector2(-400, 780)
+"nodes/Weapons bay/node" = SubResource("AnimationNodeAnimation_f5rl5")
+"nodes/Weapons bay/position" = Vector2(-700, 1090)
+"nodes/RESET 4/node" = SubResource("AnimationNodeAnimation_dylrm")
+"nodes/RESET 4/position" = Vector2(-700, 1260)
+nodes/WEP/node = SubResource("AnimationNodeBlend2_0qm2q")
+nodes/WEP/position = Vector2(-390, 1110)
+"nodes/Add2 3/node" = SubResource("AnimationNodeAdd2_2kjjo")
+"nodes/Add2 3/position" = Vector2(173.4986, 767.4142)
+"nodes/Heat fins/node" = SubResource("AnimationNodeAnimation_l7hy7")
+"nodes/Heat fins/position" = Vector2(-700, 1500)
+nodes/heatfin/node = SubResource("AnimationNodeBlend2_irk6f")
+nodes/heatfin/position = Vector2(-349.28134, 1525.8008)
+"nodes/RESET 5/node" = SubResource("AnimationNodeAnimation_0qm2q")
+"nodes/RESET 5/position" = Vector2(-580.46606, 1708.1172)
+"nodes/Add2 4/node" = SubResource("AnimationNodeAdd2_4q3tg")
+"nodes/Add2 4/position" = Vector2(206.92316, 1169.0286)
+node_connections = [&"output", 0, &"Add2 4", &"Add2", 0, &"mainB", &"Add2", 1, &"portB", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"starboardB", &"mainB", 0, &"RESET", &"mainB", 1, &"Main B Thruster", &"portB", 0, &"RESET 2", &"portB", 1, &"port B thrusters", &"starboardB", 0, &"RESET 3", &"starboardB", 1, &"starboard B thrusters", &"WEP", 0, &"RESET 4", &"WEP", 1, &"Weapons bay", &"Add2 3", 0, &"Add2 2", &"Add2 3", 1, &"WEP", &"heatfin", 0, &"RESET 5", &"heatfin", 1, &"Heat fins", &"Add2 4", 0, &"Add2 3", &"Add2 4", 1, &"heatfin"]
+
+[node name="RECOZU bengal final fir export" unique_id=2024746651 instance=ExtResource("1_je08d")]
+script = ExtResource("2_godjj")
+direct_thrust_intensity_control = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0" unique_id=943894176]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=347081864]
+environment = SubResource("Environment_xk25j")
+
+[node name="AnimationPlayer" parent="." index="34" unique_id=1445118850 node_paths=PackedStringArray("skeleton")]
+script = ExtResource("3_xk25j")
+skeleton = NodePath("../ship primary armature/Skeleton3D")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="35" unique_id=1577366187]
+tree_root = SubResource("AnimationNodeBlendTree_m7jt8")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
+parameters/mainB/blend_amount = 0.0
+parameters/portB/blend_amount = 0.0
+parameters/starboardB/blend_amount = 0.0
+parameters/WEP/blend_amount = 0.0
+"parameters/Add2 3/add_amount" = 1.0
+parameters/heatfin/blend_amount = 0.0
+"parameters/Add2 4/add_amount" = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="." index="36" unique_id=2028897509]
+transform = Transform3D(0.7391537, -0.3413394, 0.5806369, 0, 0.8620716, 0.5067866, -0.6735368, -0.37459317, 0.6372034, 5.3641267, 5.310825, 8.448809)
+current = true
