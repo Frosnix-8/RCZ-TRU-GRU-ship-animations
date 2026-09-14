@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b3oxisqm00wrp"
-path="res://.godot/imported/godotboingo.glb-131fc19fc609dcce3e2863c54d40aa03.scn"
+valid=false
 
 [deps]
 
 source_file="res://godotboingo.glb"
-dest_files=["res://.godot/imported/godotboingo.glb-131fc19fc609dcce3e2863c54d40aa03.scn"]
 
 [params]
 

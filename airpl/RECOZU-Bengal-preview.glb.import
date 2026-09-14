@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c8q8l5jf5ji4t"
-path="res://.godot/imported/RECOZU-Bengal-preview.glb-26ae118e98228cec8b342c5d388c807c.scn"
+valid=false
 
 [deps]
 
 source_file="res://airpl/RECOZU-Bengal-preview.glb"
-dest_files=["res://.godot/imported/RECOZU-Bengal-preview.glb-26ae118e98228cec8b342c5d388c807c.scn"]
 
 [params]
 
